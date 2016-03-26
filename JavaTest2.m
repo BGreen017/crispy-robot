@@ -13,29 +13,32 @@
 
 % Terrain(3,3) = 100;
 
-BalloonZ = 3;
-BalloonY = 3;
-
 % javaaddpath '/Users/brandongreen/Documents/workspace2/OneThirtyTwo'
 % o = HelloWorld;
 % javaMethod('main', o, '');
 
 javaaddpath '/Users/brandongreen/Documents/workspace2/OneThirtyTwo/UAV.class'  % path to UAV.class
-javaaddpath '/Users/brandongreen/Documents/workspace2/OneThirtyTwo/MyThread2.class'  % path to MyThread2.class
-javaaddpath '/Users/brandongreen/Documents/workspace2/OneThirtyTwo/Thread2.class'  % path to Thread2.class
+javaaddpath '/Users/brandongreen/Documents/workspace2/OneThirtyTwo/MyThread3.class'  % path to MyThread3.class
+javaaddpath '/Users/brandongreen/Documents/workspace2/OneThirtyTwo/Thread3.class'  % path to Thread3.class
 
 x1 = 1;
 x2 = 2;
 
+BalloonZ = 3;
+BalloonY = 3;
+
 UAV = javaObjectEDT('UAV',1,2,3, BalloonZ, BalloonY);
 UAV2 = javaObjectEDT('UAV',79,7,5,BalloonZ, BalloonY);
-uavArray = javaArray('UAV',x2);
-uavArray(1,1) = UAV;
-uavArray(2,1) = UAV2;
+uavArray = javaArray('UAV',x1);
+%uavArray(1,1) = UAV;
+uavArray(1,1) = UAV2;
 
-o = Thread2;
+o = Thread3;
 
-javaMethod('readThreads',o,uavArray);
+a = javaMethod('readThreads',o,uavArray);
 
+plot(a(1,:), a(2,:));
+axis([0, 10, 0, 10]);
+grid on;
 %start(MyThread2(UAV));
 %start(MyThread2(UAV2));
